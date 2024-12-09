@@ -1,7 +1,7 @@
 # paulmanjarres-zsh-theme
 
 My personal ZSH theme.
-Based on RubbyRussel
+Based on RubbyRussel, Agnoster, nuts.zsh-theme
 
 
 ## Installation
@@ -11,9 +11,11 @@ $ cd paulmanjarres-zsh-theme
 $ make link
 ```
 
-go to your .zshrc file and change ZSH_THEME to this new one
+Edit .zshrc file and change ZSH_THEME to this:
 
 ```
 $ cd ~/.zshrc
 ZSH_THEME=paulmanjarres
 ```
+## Screenshots
+![1.png](./screenshot/1.png)
