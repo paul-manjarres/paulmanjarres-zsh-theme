@@ -6,6 +6,9 @@
 # git config --add oh-my-zsh.hide-status 1
 # -> git config --add oh-my-zsh.hide-dirty 1
 
+SEGMENT_SEPARATOR=$'\ue0b0'
+PL_BRANCH_CHAR=$'\ue0a0'
+
 function git_prompt_info() {
   local ref
   if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
@@ -48,9 +51,9 @@ prompt_current_branch(){
     fi
     dirty=$(git_dirty)
     if [[ -n $dirty ]]; then
-      echo "%{$bg[yellow]%}%{$fg[black]%} $ZSH_THEME_GIT_PROMPT_PREFIX$pr * $ZSH_THEME_GIT_PROMPT_SUFFIX"
+      echo "%{$bg[yellow]%}%{$fg[black]%}$SEGMENT_SEPARATOR $ZSH_THEME_GIT_PROMPT_PREFIX$pr * %{$reset_color%}%{$fg[yellow]%}$SEGMENT_SEPARATOR$ZSH_THEME_GIT_PROMPT_SUFFIX"
     else
-      echo "%{$bg[green]%}%{$fg[black]%} $ZSH_THEME_GIT_PROMPT_PREFIX$pr $ZSH_THEME_GIT_PROMPT_SUFFIX"
+      echo "%{$bg[green]%}%{$fg[black]%}$SEGMENT_SEPARATOR $ZSH_THEME_GIT_PROMPT_PREFIX$pr %{$reset_color%}%{$fg[green]%}$SEGMENT_SEPARATOR$ZSH_THEME_GIT_PROMPT_SUFFIX"
     fi
 }
 
@@ -70,7 +73,8 @@ ZSH_THEME_GIT_PROMPT_SHA_BEFORE="➤%{%F{yellow}%}["
 ZSH_THEME_GIT_PROMPT_SHA_AFTER="]%{$reset_color%}"
 
 #ZSH_THEME_GIT_PROMPT_PREFIX="%{%F{green}%}\ue727 "
-ZSH_THEME_GIT_PROMPT_PREFIX="\ue727 "
+
+ZSH_THEME_GIT_PROMPT_PREFIX="$PL_BRANCH_CHAR "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} *%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{%F{red}%} !%{$reset_color%}"
